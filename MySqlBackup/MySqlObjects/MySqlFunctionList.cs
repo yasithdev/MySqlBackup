@@ -40,7 +40,7 @@ namespace MySql.Data.MySqlClient
         {
             get
             {
-                foreach (MySqlFunction t in _lst)
+                foreach (var t in _lst)
                     if (t.Name == functionName)
                         return t;
                 throw new Exception("Function \"" + functionName + "\" is not existed.");
@@ -56,7 +56,7 @@ namespace MySql.Data.MySqlClient
             _lst = null;
         }
 
-        public bool Contains(string functionName)=> this[functionName] != null;
+        public bool Contains(string functionName) => this[functionName] != null;
         public IEnumerator<MySqlFunction> GetEnumerator() => _lst.GetEnumerator();
     }
 }

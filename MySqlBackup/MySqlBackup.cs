@@ -29,7 +29,11 @@ namespace MySql.Data.MySqlClient
 
         public const string Version = "2.0.9.2";
 
+        public readonly ExportInformations ExportInfo = new ExportInformations();
+        public readonly ImportInformations ImportInfo = new ImportInformations();
+
         private long _currentBytes;
+        private ProcessType _currentProcess;
         private long _currentRowIndexInAllTable;
         private long _currentRowIndexInCurrentTable;
         private int _currentTableIndex;
@@ -40,16 +44,8 @@ namespace MySql.Data.MySqlClient
         private bool _isNewDatabase;
         private MySqlScript _mySqlScript;
         private bool _nameIsSet;
-        private StringBuilder _sbImport;
-        private long _totalBytes;
-        private long _totalRowsInAllTables;
-        private long _totalRowsInCurrentTable;
-        private int _totalTables;
-        private ProcessType _currentProcess;
-
-        public readonly ExportInformations ExportInfo = new ExportInformations();
-        public readonly ImportInformations ImportInfo = new ImportInformations();
         private ProcessEndType _processCompletionType;
+        private StringBuilder _sbImport;
 
         private string _sha512HashedPassword = "";
         private bool _stopProcess;
@@ -58,6 +54,10 @@ namespace MySql.Data.MySqlClient
         private DateTime _timeEnd;
         private Timer _timerReport;
         private DateTime _timeStart;
+        private long _totalBytes;
+        private long _totalRowsInAllTables;
+        private long _totalRowsInCurrentTable;
+        private int _totalTables;
 
         private Encoding _utf8WithoutBom;
 
@@ -472,9 +472,7 @@ namespace MySql.Data.MySqlClient
                 {
                     var columnstr = "";
                     foreach (var tableColumn in table.Columns)
-                    {
-                        if(!tableColumn.IsGenerated) columnstr += $"`{tableColumn.Name}`,";
-                    }
+                        if (!tableColumn.IsGenerated) columnstr += $"`{tableColumn.Name}`,";
                     columnstr = columnstr.TrimEnd(',');
                     dic[table.Name] = $"SELECT {columnstr} FROM `{table.Name}`;";
                 }
@@ -797,7 +795,8 @@ namespace MySql.Data.MySqlClient
                 Export_WriteLine("DELIMITER " + ExportInformations.ScriptsDelimiter);
 
                 if (ExportInfo.ExportRoutinesWithoutDefiner)
-                    Export_WriteLine(procedure.CreateProcedureSqlWithoutDefiner + " " + ExportInformations.ScriptsDelimiter);
+                    Export_WriteLine(procedure.CreateProcedureSqlWithoutDefiner + " " +
+                                     ExportInformations.ScriptsDelimiter);
                 else
                     Export_WriteLine(procedure.CreateProcedureSql + " " + ExportInformations.ScriptsDelimiter);
 
@@ -826,7 +825,8 @@ namespace MySql.Data.MySqlClient
                 Export_WriteLine("DELIMITER " + ExportInformations.ScriptsDelimiter);
 
                 if (ExportInfo.ExportRoutinesWithoutDefiner)
-                    Export_WriteLine(function.CreateFunctionSqlWithoutDefiner + " " + ExportInformations.ScriptsDelimiter);
+                    Export_WriteLine(function.CreateFunctionSqlWithoutDefiner + " " +
+                                     ExportInformations.ScriptsDelimiter);
                 else
                     Export_WriteLine(function.CreateFunctionSql + " " + ExportInformations.ScriptsDelimiter);
 

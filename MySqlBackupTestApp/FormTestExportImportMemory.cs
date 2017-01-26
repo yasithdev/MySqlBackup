@@ -21,8 +21,8 @@ namespace MySqlBackupTestApp
             try
             {
                 var ms = new MemoryStream();
-                MySqlConnection conn = new MySqlConnection(Program.ConnectionString);
-                MySqlCommand cmd = new MySqlCommand();
+                var conn = new MySqlConnection(Program.ConnectionString);
+                var cmd = new MySqlCommand();
                 var mb = new MySqlBackup(cmd);
                 cmd.Connection = conn;
                 conn.Open();
@@ -48,8 +48,8 @@ namespace MySqlBackupTestApp
                 }
 
                 var ms = new MemoryStream(_ba);
-                MySqlConnection conn = new MySqlConnection(Program.ConnectionString);
-                MySqlCommand cmd = new MySqlCommand();
+                var conn = new MySqlConnection(Program.ConnectionString);
+                var cmd = new MySqlCommand();
                 var mb = new MySqlBackup(cmd);
                 cmd.Connection = conn;
                 conn.Open();

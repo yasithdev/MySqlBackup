@@ -129,10 +129,7 @@ namespace MySql.Data.MySqlClient
         /// </summary>
         public List<string> TablesToBeExportedList
         {
-            get
-            {
-                return TablesToBeExportedDic.Select(kv => kv.Key).ToList();
-            }
+            get { return TablesToBeExportedDic.Select(kv => kv.Key).ToList(); }
             set
             {
                 throw new NotSupportedException("Setting this creates the generated columns problem");
@@ -154,10 +151,7 @@ namespace MySql.Data.MySqlClient
         /// </summary>
         public int IntervalForProgressReport
         {
-            get
-            {
-                return _interval == 0 ? 100 : _interval;
-            }
+            get { return _interval == 0 ? 100 : _interval; }
             set { _interval = value; }
         }
 

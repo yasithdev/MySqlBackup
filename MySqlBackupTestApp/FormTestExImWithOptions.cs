@@ -31,9 +31,9 @@ namespace MySqlBackupTestApp
 
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(Program.ConnectionString))
+                using (var conn = new MySqlConnection(Program.ConnectionString))
                 {
-                    using (MySqlCommand cmd = new MySqlCommand())
+                    using (var cmd = new MySqlCommand())
                     {
                         cmd.Connection = conn;
                         conn.Open();
@@ -81,9 +81,9 @@ namespace MySqlBackupTestApp
 
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(Program.ConnectionString))
+                using (var conn = new MySqlConnection(Program.ConnectionString))
                 {
-                    using (MySqlCommand cmd = new MySqlCommand())
+                    using (var cmd = new MySqlCommand())
                     {
                         cmd.Connection = conn;
                         conn.Open();

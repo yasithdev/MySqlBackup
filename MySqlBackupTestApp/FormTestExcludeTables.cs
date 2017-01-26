@@ -15,9 +15,9 @@ namespace MySqlBackupTestApp
 
         private void btGetTables_Click(object sender, EventArgs e)
         {
-            using (MySqlConnection conn = new MySqlConnection(Program.ConnectionString))
+            using (var conn = new MySqlConnection(Program.ConnectionString))
             {
-                using (MySqlCommand cmd = new MySqlCommand())
+                using (var cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
                     conn.Open();
@@ -62,9 +62,9 @@ namespace MySqlBackupTestApp
                 foreach (var item in checkedListBox1.CheckedItems)
                     lst.Add(item.ToString());
 
-                using (MySqlConnection conn = new MySqlConnection(Program.ConnectionString))
+                using (var conn = new MySqlConnection(Program.ConnectionString))
                 {
-                    using (MySqlCommand cmd = new MySqlCommand())
+                    using (var cmd = new MySqlCommand())
                     {
                         using (var mb = new MySqlBackup(cmd))
                         {

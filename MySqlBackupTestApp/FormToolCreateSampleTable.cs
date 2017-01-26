@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -12,10 +11,10 @@ namespace MySqlBackupTestApp
     public partial class FormToolCreateSampleTable : Form
     {
         private readonly BackgroundWorker _bw = new BackgroundWorker();
+        private readonly Timer _timer1;
         private long _currentRow;
         private bool _stop;
         private string _tableName = "";
-        private readonly Timer _timer1;
         private long _totalRows;
 
         public FormToolCreateSampleTable()
@@ -58,9 +57,9 @@ ENGINE = InnoDB;";
 
         private void btDrop_Click(object sender, EventArgs e)
         {
-            using (MySqlConnection conn = new MySqlConnection(Program.ConnectionString))
+            using (var conn = new MySqlConnection(Program.ConnectionString))
             {
-                using (MySqlCommand cmd = new MySqlCommand())
+                using (var cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
                     conn.Open();
@@ -109,7 +108,7 @@ ENGINE = InnoDB;";
             sb2.AppendFormat("','");
             sb2.AppendFormat(DateTime.Now.ToString("HH:mm:ss")); // time
             sb2.AppendFormat("',3487.2398,1,CURRENT_TIMESTAMP,'00000000000000000000000000000000',");
-                // decimal, tinyint, timestamp
+            // decimal, tinyint, timestamp
             sb2.AppendFormat(CryptoExpress.ConvertByteArrayToHexString(new byte[16]));
             sb2.AppendFormat(",243.234,456.456,");
             sb2.AppendFormat(CryptoExpress.ConvertByteArrayToHexString(new byte[16]));
@@ -120,9 +119,9 @@ ENGINE = InnoDB;";
 
             var maxlength = 1024 * 1024;
 
-            using (MySqlConnection conn = new MySqlConnection(Program.ConnectionString))
+            using (var conn = new MySqlConnection(Program.ConnectionString))
             {
-                using (MySqlCommand cmd = new MySqlCommand())
+                using (var cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
                     conn.Open();
@@ -193,9 +192,9 @@ ENGINE = InnoDB;";
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(Program.ConnectionString))
+                using (var conn = new MySqlConnection(Program.ConnectionString))
                 {
-                    MySqlScript script = new MySqlScript(conn);
+                    var script = new MySqlScript(conn);
                     script.Query = sql;
                     script.Execute();
                     script = null;

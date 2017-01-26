@@ -8,14 +8,14 @@ namespace MySqlBackupTestApp
     public partial class FormTestImportProgressReport : Form
     {
         private readonly BackgroundWorker bwImport;
+        private readonly MySqlBackup mb;
+        private readonly Timer timer1;
 
         private bool cancel;
         private MySqlCommand cmd;
         private MySqlConnection conn;
 
         private int curBytes;
-        private readonly MySqlBackup mb;
-        private readonly Timer timer1;
         private int totalBytes;
 
         public FormTestImportProgressReport()

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.IO.Compression;
 using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
@@ -31,9 +30,9 @@ namespace MySqlBackupTestApp
                 {
                     using (TextWriter tw = new StreamWriter(ms, new UTF8Encoding(false)))
                     {
-                        using (MySqlConnection conn = new MySqlConnection(Program.ConnectionString))
+                        using (var conn = new MySqlConnection(Program.ConnectionString))
                         {
-                            using (MySqlCommand cmd = new MySqlCommand())
+                            using (var cmd = new MySqlCommand())
                             {
                                 using (var mb = new MySqlBackup(cmd))
                                 {
@@ -84,9 +83,9 @@ namespace MySqlBackupTestApp
                         ms.Position = 0;
                         using (TextReader tr = new StreamReader(ms))
                         {
-                            using (MySqlConnection conn = new MySqlConnection(Program.ConnectionString))
+                            using (var conn = new MySqlConnection(Program.ConnectionString))
                             {
-                                using (MySqlCommand cmd = new MySqlCommand())
+                                using (var cmd = new MySqlCommand())
                                 {
                                     using (var mb = new MySqlBackup(cmd))
                                     {
@@ -138,9 +137,9 @@ namespace MySqlBackupTestApp
                     zip.ExtractFile(dir[0], dumpFile);
                 }
 
-                using (MySqlConnection conn = new MySqlConnection(Program.ConnectionString))
+                using (var conn = new MySqlConnection(Program.ConnectionString))
                 {
-                    using (MySqlCommand cmd = new MySqlCommand())
+                    using (var cmd = new MySqlCommand())
                     {
                         using (var mb = new MySqlBackup(cmd))
                         {
@@ -177,9 +176,9 @@ namespace MySqlBackupTestApp
                 var fileDump = f.SelectedPath + "\\" + filename;
                 var fileZip = f.SelectedPath + "\\dumpzip" + timenow + ".zip";
 
-                using (MySqlConnection conn = new MySqlConnection(Program.ConnectionString))
+                using (var conn = new MySqlConnection(Program.ConnectionString))
                 {
-                    using (MySqlCommand cmd = new MySqlCommand())
+                    using (var cmd = new MySqlCommand())
                     {
                         using (var mb = new MySqlBackup(cmd))
                         {

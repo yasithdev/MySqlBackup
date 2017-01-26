@@ -87,9 +87,9 @@ namespace MySqlBackupTestApp
 
                 var isExecution = false;
 
-                using (MySqlConnection conn = new MySqlConnection(Program.ConnectionString))
+                using (var conn = new MySqlConnection(Program.ConnectionString))
                 {
-                    using (MySqlCommand cmd = new MySqlCommand())
+                    using (var cmd = new MySqlCommand())
                     {
                         conn.Open();
                         cmd.Connection = conn;
@@ -97,7 +97,7 @@ namespace MySqlBackupTestApp
                         if (sqllower.StartsWith("select") || sqllower.StartsWith("show"))
                         {
                             cmd.CommandText = sql;
-                            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                            var da = new MySqlDataAdapter(cmd);
                             da.Fill(dt);
                         }
                         else
@@ -105,7 +105,7 @@ namespace MySqlBackupTestApp
                             isExecution = true;
 
                             cmd.CommandText = sql;
-                            int rowsAffected = cmd.ExecuteNonQuery();
+                            var rowsAffected = cmd.ExecuteNonQuery();
 
                             dt.Columns.Add("Result");
 

@@ -7,6 +7,9 @@ namespace MySqlBackupTestApp
 {
     public partial class FormTestExportProgresBar : Form
     {
+        private readonly BackgroundWorker bwExport;
+        private readonly MySqlBackup mb;
+        private readonly Timer timer1;
         private int _currentRowIndexInAllTable;
         private int _currentRowIndexInCurrentTable;
         private int _currentTableIndex;
@@ -15,13 +18,10 @@ namespace MySqlBackupTestApp
         private int _totalRowsInAllTables;
         private int _totalRowsInCurrentTable;
         private int _totalTables;
-        private readonly BackgroundWorker bwExport;
 
         private bool cancel;
         private MySqlCommand cmd;
         private MySqlConnection conn;
-        private readonly MySqlBackup mb;
-        private readonly Timer timer1;
 
         public FormTestExportProgresBar()
         {

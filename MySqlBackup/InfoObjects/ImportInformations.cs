@@ -31,10 +31,7 @@
         /// </summary>
         public int IntervalForProgressReport
         {
-            get
-            {
-                return _interval == 0 ? 100 : _interval;
-            }
+            get { return _interval == 0 ? 100 : _interval; }
             set { _interval = value; }
         }
 

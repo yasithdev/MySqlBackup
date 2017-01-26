@@ -11,11 +11,11 @@ namespace MySqlBackupTestApp
     public partial class FormDatabaseInfo : Form
     {
         private readonly BackgroundWorker _bw;
+        private readonly Timer _timer1;
         private MySqlCommand _cmd;
         private MySqlDatabase _myDatabase;
         private MySqlServer _myServer;
         private StringBuilder _sb;
-        private readonly Timer _timer1;
 
         public FormDatabaseInfo()
         {
@@ -51,7 +51,7 @@ namespace MySqlBackupTestApp
                 "<html><head><style>h1 { line-height:160%; font-size: 20pt; } h2 { line-height:160%; font-size: 14pt; } body { font-family: \"Segoe UI\", Arial; line-height: 150%; } table { border: 1px solid #5C5C5C; border-collapse: collapse; } td { font-size: 10pt; padding: 4px; border: 1px solid #5C5C5C; } .code { font-family: \"Courier New\"; font-size: 10pt; line-height:110%; } </style></head>");
             _sb.AppendLine("<body>");
 
-            using (MySqlConnection conn = new MySqlConnection(Program.ConnectionString))
+            using (var conn = new MySqlConnection(Program.ConnectionString))
             {
                 try
                 {

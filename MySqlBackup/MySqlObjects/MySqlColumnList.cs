@@ -5,8 +5,8 @@ namespace MySql.Data.MySqlClient
 {
     public class MySqlColumnList : IDisposable
     {
-        private List<MySqlColumn> _lst = new List<MySqlColumn>();
         private readonly string _tableName;
+        private List<MySqlColumn> _lst = new List<MySqlColumn>();
 
         public MySqlColumnList()
         {

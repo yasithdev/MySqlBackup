@@ -530,12 +530,12 @@ namespace MySqlBackupTestApp
 
             ZipFileStream.Write(new byte[] {80, 75, 3, 4, 20, 0}, 0, 6); // No extra header
             ZipFileStream.Write(BitConverter.GetBytes((ushort) (_zfe.EncodeUTF8 ? 0x0800 : 0)), 0, 2);
-                // filename and comment encoding 
+            // filename and comment encoding 
             ZipFileStream.Write(BitConverter.GetBytes((ushort) _zfe.Method), 0, 2); // zipping method
             ZipFileStream.Write(BitConverter.GetBytes(DateTimeToDosTime(_zfe.ModifyTime)), 0, 4);
-                // zipping date and time
+            // zipping date and time
             ZipFileStream.Write(new byte[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 0, 12);
-                // unused CRC, un/compressed size, updated later
+            // unused CRC, un/compressed size, updated later
             ZipFileStream.Write(BitConverter.GetBytes((ushort) encodedFilename.Length), 0, 2); // filename length
             ZipFileStream.Write(BitConverter.GetBytes((ushort) 0), 0, 2); // extra length
 
@@ -575,10 +575,10 @@ namespace MySqlBackupTestApp
 
             ZipFileStream.Write(new byte[] {80, 75, 1, 2, 23, 0xB, 20, 0}, 0, 8);
             ZipFileStream.Write(BitConverter.GetBytes((ushort) (_zfe.EncodeUTF8 ? 0x0800 : 0)), 0, 2);
-                // filename and comment encoding 
+            // filename and comment encoding 
             ZipFileStream.Write(BitConverter.GetBytes((ushort) _zfe.Method), 0, 2); // zipping method
             ZipFileStream.Write(BitConverter.GetBytes(DateTimeToDosTime(_zfe.ModifyTime)), 0, 4);
-                // zipping date and time
+            // zipping date and time
             ZipFileStream.Write(BitConverter.GetBytes(_zfe.Crc32), 0, 4); // file CRC
             ZipFileStream.Write(BitConverter.GetBytes(_zfe.CompressedSize), 0, 4); // compressed file size
             ZipFileStream.Write(BitConverter.GetBytes(_zfe.FileSize), 0, 4); // uncompressed file size
@@ -590,7 +590,7 @@ namespace MySqlBackupTestApp
             ZipFileStream.Write(BitConverter.GetBytes((ushort) 0), 0, 2); // file type: binary
             ZipFileStream.Write(BitConverter.GetBytes((ushort) 0), 0, 2); // Internal file attributes
             ZipFileStream.Write(BitConverter.GetBytes((ushort) 0x8100), 0, 2);
-                // External file attributes (normal/readable)
+            // External file attributes (normal/readable)
             ZipFileStream.Write(BitConverter.GetBytes(_zfe.HeaderOffset), 0, 4); // Offset of header
 
             ZipFileStream.Write(encodedFilename, 0, encodedFilename.Length);

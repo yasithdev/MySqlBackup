@@ -50,15 +50,15 @@ namespace MySqlBackupTestApp
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(Program.ConnectionString))
+                using (var conn = new MySqlConnection(Program.ConnectionString))
                 {
                     var sql = textBox1.Text.Trim();
 
                     if (q == 2)
                     {
-                        MySqlScript script = new MySqlScript(conn);
+                        var script = new MySqlScript(conn);
                         script.Query = sql;
-                        int i = script.Execute();
+                        var i = script.Execute();
                         dt = new DataTable();
                         dt.Columns.Add("Result");
                         dt.Rows.Add(i + " statement(s) executed.");
@@ -79,7 +79,7 @@ namespace MySqlBackupTestApp
                                     textBox1.Refresh();
                                 }
 
-                            using (MySqlCommand cmd = new MySqlCommand())
+                            using (var cmd = new MySqlCommand())
                             {
                                 cmd.Connection = conn;
                                 conn.Open();
@@ -89,12 +89,12 @@ namespace MySqlBackupTestApp
                         }
                         else
                         {
-                            using (MySqlCommand cmd = new MySqlCommand())
+                            using (var cmd = new MySqlCommand())
                             {
                                 cmd.Connection = conn;
                                 conn.Open();
                                 cmd.CommandText = sql;
-                                int i = cmd.ExecuteNonQuery();
+                                var i = cmd.ExecuteNonQuery();
                                 dt = new DataTable();
                                 dt.Columns.Add("Results");
                                 dt.Rows.Add(i + " row(s) affected by the last command.");

@@ -14,9 +14,9 @@ namespace MySqlBackupTestApp
 
         private void btGetHeadersFooters_Click(object sender, EventArgs e)
         {
-            using (MySqlConnection conn = new MySqlConnection(Program.ConnectionString))
+            using (var conn = new MySqlConnection(Program.ConnectionString))
             {
-                using (MySqlCommand cmd = new MySqlCommand())
+                using (var cmd = new MySqlCommand())
                 {
                     using (var mb = new MySqlBackup(cmd))
                     {
@@ -37,9 +37,9 @@ namespace MySqlBackupTestApp
 
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(Program.ConnectionString))
+                using (var conn = new MySqlConnection(Program.ConnectionString))
                 {
-                    using (MySqlCommand cmd = new MySqlCommand())
+                    using (var cmd = new MySqlCommand())
                     {
                         using (var mb = new MySqlBackup(cmd))
                         {

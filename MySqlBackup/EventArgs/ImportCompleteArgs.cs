@@ -15,14 +15,14 @@ namespace MySql.Data.MySqlClient
         }
 
         /// <summary>
-        /// The completion type of current import processs.
-        /// </summary>
-        public CompleteType CompletedType = CompleteType.Completed;
-
-        /// <summary>
         ///     The last error (exception) occur in import process.
         /// </summary>
         public readonly Exception LastError = null;
+
+        /// <summary>
+        ///     The completion type of current import processs.
+        /// </summary>
+        public CompleteType CompletedType = CompleteType.Completed;
 
         /// <summary>
         ///     The ending time of import process.

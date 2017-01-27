@@ -1,4 +1,4 @@
-# MySQLBackup.NET
+# MySqlBackup
 
 This project is based on the MySQLBackup.NET nuget package at https://mysqlbackupnet.codeplex.com.
 

@@ -120,8 +120,8 @@ namespace MySql.Data.MySqlClient
         /// </summary>
         public List<string> ExcludeTables
         {
-            get { return _lstExcludeTables ?? (_lstExcludeTables = new List<string>()); }
-            set { _lstExcludeTables = value; }
+            get => _lstExcludeTables ?? (_lstExcludeTables = new List<string>());
+            set => _lstExcludeTables = value;
         }
 
         /// <summary>
@@ -151,8 +151,8 @@ namespace MySql.Data.MySqlClient
         /// </summary>
         public int IntervalForProgressReport
         {
-            get { return _interval == 0 ? 100 : _interval; }
-            set { _interval = value; }
+            get => _interval == 0 ? 100 : _interval;
+            set => _interval = value;
         }
 
         /// <summary>

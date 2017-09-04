@@ -47,7 +47,8 @@ namespace MySql.Data.MySqlClient
         public void GetDatabaseInfo(MySqlCommand cmd, bool getTotalRowsForEachTable)
         {
             Name = QueryExpress.ExecuteScalarStr(cmd, "SELECT DATABASE();");
-            DefaultCharacterSet = QueryExpress.ExecuteScalarStr(cmd, "SHOW VARIABLES LIKE 'character_set_database';", 1);
+            DefaultCharacterSet =
+                QueryExpress.ExecuteScalarStr(cmd, "SHOW VARIABLES LIKE 'character_set_database';", 1);
             CreateDatabaseSql =
                 QueryExpress.ExecuteScalarStr(cmd, $"SHOW CREATE DATABASE `{Name}`;", 1)
                     .Replace("CREATE DATABASE", "CREATE DATABASE IF NOT EXISTS") + ";";

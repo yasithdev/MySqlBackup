@@ -55,7 +55,14 @@ namespace MySql.Data.MySqlClient
             _lst = null;
         }
 
-        public bool Contains(string triggerName) => this[triggerName] != null;
-        public IEnumerator<MySqlTrigger> GetEnumerator() => _lst.GetEnumerator();
+        public bool Contains(string triggerName)
+        {
+            return this[triggerName] != null;
+        }
+
+        public IEnumerator<MySqlTrigger> GetEnumerator()
+        {
+            return _lst.GetEnumerator();
+        }
     }
 }

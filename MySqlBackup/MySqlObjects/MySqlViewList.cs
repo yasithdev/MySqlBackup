@@ -38,10 +38,7 @@ namespace MySql.Data.MySqlClient
 
         public string SqlShowViewList { get; } = "";
 
-        public MySqlView this[int viewIndex]
-        {
-            get { return _lst[viewIndex]; }
-        }
+        public MySqlView this[int viewIndex] => _lst[viewIndex];
 
         public MySqlView this[string viewName]
         {
@@ -54,10 +51,7 @@ namespace MySql.Data.MySqlClient
             }
         }
 
-        public int Count
-        {
-            get { return _lst.Count; }
-        }
+        public int Count => _lst.Count;
 
         public void Dispose()
         {

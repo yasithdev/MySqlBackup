@@ -99,20 +99,28 @@ namespace MySqlBackupTestApp
 
         // List of files to store
         private readonly List<ZipFileEntry> Files = new List<ZipFileEntry>();
+
         // Filename of storage file
         private string FileName;
+
         // Stream object of storage file
         private Stream ZipFileStream;
+
         // General comment
         private string Comment = "";
+
         // Central dir image
         private byte[] CentralDirImage;
+
         // Existing files in zip
         private ushort ExistingFiles;
+
         // File access for Open method
         private FileAccess Access;
+
         // Static CRC32 Table
         private static readonly uint[] CrcTable;
+
         // Default filename encoder
         private static readonly Encoding DefaultEncoding = Encoding.GetEncoding(437);
 

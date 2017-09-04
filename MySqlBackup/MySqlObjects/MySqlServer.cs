@@ -27,7 +27,8 @@
             CharacterSetSystem = QueryExpress.ExecuteScalarStr(cmd, "SHOW variables LIKE 'character_set_system';", 1);
             CharacterSetConnection = QueryExpress.ExecuteScalarStr(cmd,
                 "SHOW variables LIKE 'character_set_connection';", 1);
-            CharacterSetDatabase = QueryExpress.ExecuteScalarStr(cmd, "SHOW variables LIKE 'character_set_database';", 1);
+            CharacterSetDatabase =
+                QueryExpress.ExecuteScalarStr(cmd, "SHOW variables LIKE 'character_set_database';", 1);
 
             CurrentUserClientHost = QueryExpress.ExecuteScalarStr(cmd, "SELECT current_user;");
 

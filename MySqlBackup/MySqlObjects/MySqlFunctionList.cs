@@ -56,7 +56,14 @@ namespace MySql.Data.MySqlClient
             _lst = null;
         }
 
-        public bool Contains(string functionName) => this[functionName] != null;
-        public IEnumerator<MySqlFunction> GetEnumerator() => _lst.GetEnumerator();
+        public bool Contains(string functionName)
+        {
+            return this[functionName] != null;
+        }
+
+        public IEnumerator<MySqlFunction> GetEnumerator()
+        {
+            return _lst.GetEnumerator();
+        }
     }
 }

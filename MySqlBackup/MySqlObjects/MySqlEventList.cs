@@ -56,7 +56,14 @@ namespace MySql.Data.MySqlClient
             _lst = null;
         }
 
-        public bool Contains(string eventName) => this[eventName] != null;
-        public IEnumerator<MySqlEvent> GetEnumerator() => _lst.GetEnumerator();
+        public bool Contains(string eventName)
+        {
+            return this[eventName] != null;
+        }
+
+        public IEnumerator<MySqlEvent> GetEnumerator()
+        {
+            return _lst.GetEnumerator();
+        }
     }
 }

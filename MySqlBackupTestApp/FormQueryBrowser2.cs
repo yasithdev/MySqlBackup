@@ -112,7 +112,8 @@ namespace MySqlBackupTestApp
                             if (rowsAffected < 2)
                                 dt.Rows.Add(rowsAffected + " row affected by the last command, no resultset returned.");
                             else
-                                dt.Rows.Add(rowsAffected + " rows affected by the last command, no resultset returned.");
+                                dt.Rows.Add(rowsAffected +
+                                            " rows affected by the last command, no resultset returned.");
                         }
 
                         conn.Close();

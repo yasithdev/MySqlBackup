@@ -916,7 +916,8 @@ namespace MySql.Data.MySqlClient
                 Export_WriteLine("DELIMITER " + ExportInformations.ScriptsDelimiter);
 
                 if (ExportInfo.ExportRoutinesWithoutDefiner)
-                    Export_WriteLine(trigger.CreateTriggerSqlWithoutDefiner + " " + ExportInformations.ScriptsDelimiter);
+                    Export_WriteLine(trigger.CreateTriggerSqlWithoutDefiner + " " +
+                                     ExportInformations.ScriptsDelimiter);
                 else
                     Export_WriteLine(trigger.CreateTriggerSql + " " + ExportInformations.ScriptsDelimiter);
 

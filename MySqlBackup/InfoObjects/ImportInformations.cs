@@ -31,8 +31,8 @@
         /// </summary>
         public int IntervalForProgressReport
         {
-            get { return _interval == 0 ? 100 : _interval; }
-            set { _interval = value; }
+            get => _interval == 0 ? 100 : _interval;
+            set => _interval = value;
         }
 
         /// <summary>
@@ -40,8 +40,8 @@
         /// </summary>
         public string TargetDatabase
         {
-            get { return (_targetDatabase + "").Trim(); }
-            set { _targetDatabase = value; }
+            get => (_targetDatabase + "").Trim();
+            set => _targetDatabase = value;
         }
 
         /// <summary>
@@ -50,8 +50,8 @@
         /// </summary>
         public string DatabaseDefaultCharSet
         {
-            get { return (_databaseDefaultCharSet + "").Trim(); }
-            set { _databaseDefaultCharSet = value; }
+            get => (_databaseDefaultCharSet + "").Trim();
+            set => _databaseDefaultCharSet = value;
         }
     }
 }

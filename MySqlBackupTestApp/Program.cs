@@ -18,7 +18,7 @@ namespace MySqlBackupTestApp
                     throw new Exception("Connection string is empty.");
                 return _connectionString;
             }
-            set { _connectionString = value; }
+            set => _connectionString = value;
         }
 
         /// <summary>

@@ -56,7 +56,14 @@ namespace MySql.Data.MySqlClient
             _lst = null;
         }
 
-        public bool Contains(string procedureName) => this[procedureName] != null;
-        public IEnumerator<MySqlProcedure> GetEnumerator() => _lst.GetEnumerator();
+        public bool Contains(string procedureName)
+        {
+            return this[procedureName] != null;
+        }
+
+        public IEnumerator<MySqlProcedure> GetEnumerator()
+        {
+            return _lst.GetEnumerator();
+        }
     }
 }

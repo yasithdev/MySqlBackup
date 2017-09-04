@@ -34,7 +34,8 @@ namespace MySqlBackupTestApp
             {
                 tsFile.Text = "";
                 tsStatus.Text = "(File not exists)";
-                MessageBox.Show("File not exists:\r\n" + file, "Open", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("File not exists:\r\n" + file, "Open", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
                 return;
             }
 
